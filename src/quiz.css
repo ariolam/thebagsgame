@@ -1,0 +1,32 @@
+html,
+body {
+  background-color: #eef1ff;
+}
+h3,
+ul {
+  font-family: "Arima Madurai", cursive;
+  text-align: center;
+}
+ul {
+  font-size: 25px;
+  list-style: none;
+  text-align: left;
+  margin-left: 473px;
+}
+ul li {
+  padding: 5px;
+}
+button {
+  background-color: #aac4ff;
+  opacity: 0.7;
+  padding: 10px;
+  font-size: 20px;
+  width: 140px;
+  text-align: center;
+}
+.icon {
+  color: #aac4ff;
+}
+.list-icon {
+  margin: 17px;
+}
