@@ -7,14 +7,52 @@ ul {
   font-family: "Arima Madurai", cursive;
   text-align: center;
 }
-ul {
-  font-size: 25px;
-  list-style: none;
-  text-align: left;
-  margin-left: 473px;
+.radio-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 18px;
 }
-ul li {
+.option {
   padding: 5px;
+  width: 372px;
+  position: relative;
+}
+.option input {
+  display: none;
+}
+.option label {
+  font-family: "Arima Madurai", cursive;
+  cursor: pointer;
+  font-size: 25px;
+}
+.option label::after {
+  content: " ";
+  position: absolute;
+  right: 102%;
+  width: 22px;
+  height: 27px;
+  border: 5px solid #aac4ff;
+  border-radius: 50%;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
+}
+.option label::before {
+  content: " ";
+  position: absolute;
+  top: 33%;
+  right: 104%;
+  width: 8px;
+  height: 10px;
+  transform: translateY(-32%);
+  background-color: #aac4ff;
+  border-radius: 50%;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.option input:checked ~ label::before {
+  opacity: 1;
 }
 button {
   background-color: #aac4ff;
@@ -23,10 +61,4 @@ button {
   font-size: 20px;
   width: 140px;
   text-align: center;
-}
-.icon {
-  color: #aac4ff;
-}
-.list-icon {
-  margin: 17px;
 }
