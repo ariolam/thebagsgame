@@ -2,8 +2,7 @@ html,
 body {
   background-color: #eef1ff;
 }
-h3,
-ul {
+h3 {
   font-family: "Arima Madurai", cursive;
   text-align: center;
 }
@@ -58,7 +57,10 @@ button {
   background-color: #aac4ff;
   opacity: 0.7;
   padding: 10px;
-  font-size: 20px;
   width: 140px;
   text-align: center;
+}
+.next-btn {
+  font-family: "Arima Madurai", cursive;
+  font-size: 20px;
 }
