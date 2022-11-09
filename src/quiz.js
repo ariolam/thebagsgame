@@ -4,8 +4,8 @@ import "./quiz.css";
 
 function Quiz() {
   const [bag, setBag] = useState("option-one");
-  const [index, setIndex] = useState(0);
 
+  const [index, setIndex] = useState(0);
   const { image, options, desc } = data[index];
 
   const changeBag = (event) => {
