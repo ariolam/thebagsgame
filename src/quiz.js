@@ -4,7 +4,7 @@ import "./quiz.css";
 
 function Quiz() {
   const [bag, setBag] = useState("option-one");
-  const [index] = useState(0);
+  const [index, setIndex] = useState(0);
 
   const { image, options, desc } = data[index];
 
@@ -12,6 +12,12 @@ function Quiz() {
     setBag(event.target.value);
   };
 
+  const showNextBag = () => {
+    setIndex((index) => {
+      let newIndex = index + 1;
+      return newIndex;
+    });
+  };
   return (
     <div>
       {" "}
@@ -57,7 +63,13 @@ function Quiz() {
           <label htmlFor="option-three">{options[2].text} </label>
         </div>
       </div>
-      <button className="border-0 rounded mx-auto d-block mt-5"> Submit</button>
+      <button
+        className=" next-btn border-0 rounded mx-auto d-block mt-5"
+        onClick={showNextBag}
+      >
+        {" "}
+        Next{" "}
+      </button>
     </div>
   );
 }
