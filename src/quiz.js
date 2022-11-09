@@ -1,8 +1,12 @@
 import React, { useState } from "react";
+import data from "./data";
 import "./quiz.css";
 
 function Quiz() {
-  const [bag, setBag] = useState("tote bag");
+  const [bag, setBag] = useState("option-one");
+  const [index] = useState(0);
+
+  const { image, options, desc } = data[index];
 
   const changeBag = (event) => {
     setBag(event.target.value);
@@ -13,8 +17,8 @@ function Quiz() {
       {" "}
       <h3 className="mt-5"> Choose the type of the below bag:</h3>
       <img
-        src="redbag.jpg"
-        alt="redbag"
+        src={image}
+        alt={desc}
         width={300}
         className="rounded mx-auto d-block mt-3"
       ></img>
@@ -22,35 +26,35 @@ function Quiz() {
         <div className="option">
           <input
             type="radio"
-            id="tote bag"
+            id="option-one"
             name="choose"
-            value="tote bag"
-            checked={bag === "tote bag"}
+            value="option-one"
+            checked={bag === "option-one"}
             onChange={changeBag}
           />
-          <label htmlFor="tote bag"> tote bag</label>
+          <label htmlFor="option-one"> {options[0].text}</label>
         </div>
         <div className="option">
           <input
             type="radio"
-            id="handbag"
+            id="option-two"
             name="choose"
-            value="handbag"
-            checked={bag === "handbag"}
+            value="option-two"
+            checked={bag === "option-two"}
             onChange={changeBag}
           />
-          <label htmlFor="handbag"> handbag</label>
+          <label htmlFor="option-two">{options[1].text} </label>
         </div>
         <div className="option">
           <input
             type="radio"
-            id="crossbody"
+            id="option-three"
             name="choose"
-            value="crossbody"
-            checked={bag === "crossbody"}
+            value="option-three"
+            checked={bag === "option-three"}
             onChange={changeBag}
           />
-          <label htmlFor="crossbody"> crossbody</label>
+          <label htmlFor="option-three">{options[2].text} </label>
         </div>
       </div>
       <button className="border-0 rounded mx-auto d-block mt-5"> Submit</button>
