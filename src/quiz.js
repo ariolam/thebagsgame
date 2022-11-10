@@ -3,9 +3,10 @@ import data from "./data";
 import "./quiz.css";
 
 function Quiz() {
-  const [bag, setBag] = useState("option-one");
+  const [bag, setBag] = useState();
   const [index, setIndex] = useState(0);
-  const [finalScore, setFinalScore] = useState(false);
+  const [score, setScore] = useState(0);
+  const [finalResults, setFinalResults] = useState(false);
 
   const { image, options, desc } = data[index];
 
@@ -14,20 +15,28 @@ function Quiz() {
   };
 
   const showNextBag = () => {
-    setIndex((index) => {
-      let newIndex = index + 1;
-      return newIndex;
-    });
+    if (index + 1 < data.length) {
+      setIndex(index + 1);
+    } else {
+      setIndex(0);
+      setFinalResults(true);
+    }
   };
   const chooseOption = (isCorrect) => {
-    console.log(isCorrect);
+    if (isCorrect) {
+      setScore(score + 1);
+      console.log("score", score);
+    }
   };
 
   return (
     <div>
-      {finalScore ? (
+      {finalResults ? (
         <div className="final-score">
-          <h2> Your score is ...</h2>
+          <h2>
+            {" "}
+            {score} out of {data.length} correct{" "}
+          </h2>
           <button className="restart-btn border-0 rounded mt-3">
             {" "}
             Restart the Quiz
