@@ -28,6 +28,11 @@ function Quiz() {
       console.log("score", score);
     }
   };
+  const restartQuiz = () => {
+    setBag(0);
+    setScore(0);
+    setFinalResults(false);
+  };
 
   return (
     <div>
@@ -37,7 +42,10 @@ function Quiz() {
             {" "}
             {score} out of {data.length} correct{" "}
           </h2>
-          <button className="restart-btn border-0 rounded mt-3">
+          <button
+            className="restart-btn border-0 rounded mt-3"
+            onClick={() => restartQuiz()}
+          >
             {" "}
             Restart the Quiz
           </button>
