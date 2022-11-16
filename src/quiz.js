@@ -13,7 +13,15 @@ function Quiz() {
   const changeBag = (event) => {
     setBag(event.target.value);
   };
-
+  const chooseOption = (isCorrect) => {
+    if (isCorrect) {
+      setScore(score + 1);
+    }
+  };
+  const uncheckButton = () => {
+    let allRadioButtons = document.querySelectorAll(".radioButtons");
+    allRadioButtons.forEach((value) => (value.checked = false));
+  };
   const showNextBag = () => {
     if (index + 1 < data.length) {
       setIndex(index + 1);
@@ -21,13 +29,9 @@ function Quiz() {
       setIndex(0);
       setFinalResults(true);
     }
+    uncheckButton();
   };
-  const chooseOption = (isCorrect) => {
-    if (isCorrect) {
-      setScore(score + 1);
-      console.log("score", score);
-    }
-  };
+
   const restartQuiz = () => {
     setBag(0);
     setScore(0);
@@ -67,8 +71,8 @@ function Quiz() {
                 id="option-one"
                 name="choose"
                 value="option-one"
-                checked={bag === "option-one"}
                 onChange={changeBag}
+                className="radioButtons"
               />
               <label
                 htmlFor="option-one"
@@ -84,8 +88,8 @@ function Quiz() {
                 id="option-two"
                 name="choose"
                 value="option-two"
-                checked={bag === "option-two"}
                 onChange={changeBag}
+                className="radioButtons"
               />
               <label
                 htmlFor="option-two"
@@ -100,8 +104,8 @@ function Quiz() {
                 id="option-three"
                 name="choose"
                 value="option-three"
-                checked={bag === "option-three"}
                 onChange={changeBag}
+                className="radioButtons"
               />
               <label
                 htmlFor="option-three"
