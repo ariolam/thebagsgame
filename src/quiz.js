@@ -9,20 +9,27 @@ function Quiz() {
   const [finalResults, setFinalResults] = useState(false);
 
   const { image, options, desc } = data[index];
-
   const changeBag = (event) => {
     setBag(event.target.value);
   };
-  const chooseOption = (isCorrect) => {
-    if (isCorrect) {
-      setScore(score + 1);
-    }
-  };
+
   const uncheckButton = () => {
     let allRadioButtons = document.querySelectorAll(".radioButtons");
     allRadioButtons.forEach((value) => (value.checked = false));
   };
   const showNextBag = () => {
+    // check the data
+    let bag = data[index];
+    let correctOptionId = bag.options.filter((item) => item.isCorrect)[0].id;
+    // what is selected by the user
+    let allRadioButtons = document.querySelectorAll(".radioButtons");
+    let selectedOptionId = [...allRadioButtons].findIndex(
+      (item) => item.checked
+    );
+    let isCorrect = correctOptionId === selectedOptionId;
+    if (isCorrect) {
+      setScore(score + 1);
+    }
     if (index + 1 < data.length) {
       setIndex(index + 1);
     } else {
@@ -74,13 +81,7 @@ function Quiz() {
                 onChange={changeBag}
                 className="radioButtons"
               />
-              <label
-                htmlFor="option-one"
-                onClick={() => chooseOption(options[0].isCorrect)}
-              >
-                {" "}
-                {options[0].text}
-              </label>
+              <label htmlFor="option-one"> {options[0].text}</label>
             </div>
             <div className="option">
               <input
@@ -91,12 +92,7 @@ function Quiz() {
                 onChange={changeBag}
                 className="radioButtons"
               />
-              <label
-                htmlFor="option-two"
-                onClick={() => chooseOption(options[1].isCorrect)}
-              >
-                {options[1].text}{" "}
-              </label>
+              <label htmlFor="option-two">{options[1].text} </label>
             </div>
             <div className="option">
               <input
@@ -107,18 +103,13 @@ function Quiz() {
                 onChange={changeBag}
                 className="radioButtons"
               />
-              <label
-                htmlFor="option-three"
-                onClick={() => chooseOption(options[2].isCorrect)}
-              >
-                {options[2].text}{" "}
-              </label>
+              <label htmlFor="option-three">{options[2].text} </label>
             </div>
           </div>
 
           <button
             className=" next-btn border-0 rounded mx-auto d-block mt-5"
-            onClick={showNextBag}
+            onClick={() => showNextBag(options.isCorrect)}
           >
             {" "}
             Next{" "}
