@@ -3,7 +3,7 @@ import data from "./data";
 import "./quiz.css";
 
 function Quiz() {
-  const [bag, setBag] = useState();
+  const [, setBag] = useState();
   const [index, setIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [finalResults, setFinalResults] = useState(false);
