@@ -7,12 +7,22 @@ function Quiz() {
   const [index, setIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [finalResults, setFinalResults] = useState(false);
+  const [disabled, setDisabled] = useState(true);
 
   const { image, options, desc } = data[index];
+
+  /**
+   * show bag to radio buttons
+   * */
   const changeBag = (event) => {
     setBag(event.target.value);
+    //enable next button only when a radio button is selected
+    setDisabled(false);
   };
 
+  /**
+   * make all the radio buttons uncheck on each page
+   * */
   const uncheckButton = () => {
     let allRadioButtons = document.querySelectorAll(".radioButtons");
     allRadioButtons.forEach((value) => (value.checked = false));
@@ -21,7 +31,7 @@ function Quiz() {
     // check the data
     let bag = data[index];
     let correctOptionId = bag.options.filter((item) => item.isCorrect)[0].id;
-    // what is selected by the user
+    // what is selected by the user correct vs wrong answer
     let allRadioButtons = document.querySelectorAll(".radioButtons");
     let selectedOptionId = [...allRadioButtons].findIndex(
       (item) => item.checked
@@ -30,6 +40,7 @@ function Quiz() {
     if (isCorrect) {
       setScore(score + 1);
     }
+    // show next page
     if (index + 1 < data.length) {
       setIndex(index + 1);
     } else {
@@ -37,6 +48,7 @@ function Quiz() {
       setFinalResults(true);
     }
     uncheckButton();
+    setDisabled(true);
   };
 
   const restartQuiz = () => {
@@ -109,6 +121,7 @@ function Quiz() {
 
           <button
             className=" next-btn border-0 rounded mx-auto d-block mt-5"
+            disabled={disabled}
             onClick={() => showNextBag(options.isCorrect)}
           >
             {" "}
