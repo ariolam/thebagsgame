@@ -93,3 +93,25 @@ button {
   font-size: 20px;
   width: 195px;
 }
+@media (max-width: 900px) {
+  h1 {
+    font-size: 22px;
+  }
+  h3 {
+    font-size: 18px;
+    margin-top: 32px;
+  }
+  img {
+    width: 200px;
+  }
+  .quiz {
+    width: 279px;
+  }
+  .option {
+    text-align: center;
+    width: 140px;
+  }
+  .option label::after {
+    right: 99%;
+  }
+}

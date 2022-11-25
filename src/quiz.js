@@ -75,7 +75,7 @@ function Quiz() {
       ) : (
         <div className="quiz shadow rounded">
           <h1 className="mt-3">Are you a bag expert ?</h1>
-          <h3 className="mt-5"> Choose the type of the below bag:</h3>
+          <h3 className="mt-4"> Choose the type of the below bag:</h3>
           <img
             src={image}
             alt={desc}
