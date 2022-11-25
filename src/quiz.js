@@ -10,7 +10,6 @@ function Quiz() {
   const [disabled, setDisabled] = useState(true);
 
   const { image, options, desc } = data[index];
-
   /**
    * show bag to radio buttons
    * */
@@ -58,9 +57,9 @@ function Quiz() {
   };
 
   return (
-    <div>
+    <div className="d-flex align-items-center justify-content-center">
       {finalResults ? (
-        <div className="final-score">
+        <div className="final-score shadow rounded">
           <h2>
             {" "}
             {score} out of {data.length} correct{" "}
@@ -74,9 +73,9 @@ function Quiz() {
           </button>
         </div>
       ) : (
-        <div>
-          <h1 className="mt-5">Are you a bag expert ?</h1>
-          <h3 className="mt-5"> Choose the type of the below bag:</h3>
+        <div className="quiz shadow rounded">
+          <h1 className="mt-3">Are you a bag expert ?</h1>
+          <h3 className="mt-4"> Choose the type of the below bag:</h3>
           <img
             src={image}
             alt={desc}
